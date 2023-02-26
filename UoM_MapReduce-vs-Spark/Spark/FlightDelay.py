@@ -12,7 +12,7 @@ def calculate_flight_delays(data_source, output_uri, delay_type_col_name='Carrie
     :param delay_type_col_name: Colum name of delayed flight type (carrier delay, NAS delay, etc.).
     :param iterations: Number of times query need to execute.
     """
-    with SparkSession.builder.appName("Calculate Flight Delay").getOrCreate() as spark:
+    with SparkSession.builder.appName(f"Calculate Flight Delay - {delay_type_col_name} - {iterations}").getOrCreate() as spark:
         # Load the restaurant violation CSV data
         if data_source is not None:
             flights_df = spark.read.option("header", "true").csv(data_source)
