@@ -41,6 +41,6 @@ LOCATION "${INPUT}";
 
 INSERT OVERWRITE DIRECTORY "${OUTPUT}"
 SELECT Year, avg((CarrierDelay / ArrDelay) * 100)
-                                                      FROM delay_flights
-                                                      GROUP BY Year;
+FROM delay_flights
+GROUP BY Year;
 
