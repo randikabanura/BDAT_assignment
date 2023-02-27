@@ -48,7 +48,7 @@ LINES TERMINATED BY '\n'
 STORED AS TEXTFILE
 LOCATION "${INPUT}";
 
-SET hive.execution.engine=mr;;
+SET hive.execution.engine=mr;
 
 INSERT OVERWRITE DIRECTORY "${OUTPUT}/${delay_type_col_name}"
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
