@@ -4,7 +4,7 @@ the data to analyse the various delay happens in airlines per year from 2003 to 
 
 Need to set following hivevar variable as below to set which delay type is to process.
 --hivevar delay_type_col_name=CarrierDelay
---hiveconf hive.session.id=calculate-flight-delay-CarrierDelay-1
+--hiveconf hive.session.id=calculate-flight-delay-CarrierDelay-5
 */
 
 DROP TABLE IF EXISTS delay_flights;
@@ -48,9 +48,33 @@ LINES TERMINATED BY '\n'
 STORED AS TEXTFILE
 LOCATION "${INPUT}";
 
-SET hive.execution.engine=mr;;
+SET hive.execution.engine=mr;
 
-INSERT OVERWRITE DIRECTORY "${OUTPUT}/${delay_type_col_name}"
+INSERT OVERWRITE DIRECTORY "${OUTPUT}/iterations/${delay_type_col_name}/1"
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+SELECT Year, avg((${delay_type_col_name} / ArrDelay) * 100)
+FROM delay_flights
+GROUP BY Year;
+
+INSERT OVERWRITE DIRECTORY "${OUTPUT}/iterations/${delay_type_col_name}/2"
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+SELECT Year, avg((${delay_type_col_name} / ArrDelay) * 100)
+FROM delay_flights
+GROUP BY Year;
+
+INSERT OVERWRITE DIRECTORY "${OUTPUT}/iterations/${delay_type_col_name}/3"
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+SELECT Year, avg((${delay_type_col_name} / ArrDelay) * 100)
+FROM delay_flights
+GROUP BY Year;
+
+INSERT OVERWRITE DIRECTORY "${OUTPUT}/iterations/${delay_type_col_name}/4"
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+SELECT Year, avg((${delay_type_col_name} / ArrDelay) * 100)
+FROM delay_flights
+GROUP BY Year;
+
+INSERT OVERWRITE DIRECTORY "${OUTPUT}/iterations/${delay_type_col_name}/5"
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 SELECT Year, avg((${delay_type_col_name} / ArrDelay) * 100)
 FROM delay_flights
