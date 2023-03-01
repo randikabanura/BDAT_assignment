@@ -5,6 +5,7 @@ the data to analyse the various delay happens in airlines per year from 2003 to 
 Need to set following hivevar variable as below to set which delay type is to process.
 --hivevar delay_type_col_name=CarrierDelay
 --hiveconf hive.session.id=calculate-flight-delay-CarrierDelay-5
+--hiveconf hive.execution.engine=mr
 */
 
 DROP TABLE IF EXISTS delay_flights;
