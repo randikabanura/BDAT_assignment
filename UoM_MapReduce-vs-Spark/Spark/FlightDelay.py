@@ -28,7 +28,7 @@ def calculate_flight_delays(data_source, output_uri, delay_type_col_name='Carrie
         if iterations == 1:
             flight_delay_averages = spark.sql(f"""SELECT Year, avg(({delay_type_col_name} / ArrDelay) * 100) 
                                                   FROM delay_flights 
-                                                  GROUP BY Year""").show(truncate=False)
+                                                  GROUP BY Year""")
 
             # Write the results to the specified output URI
             flight_delay_averages.write.option("header", "true").mode("overwrite").csv(
@@ -37,7 +37,7 @@ def calculate_flight_delays(data_source, output_uri, delay_type_col_name='Carrie
             for index in range(iterations):
                 flight_delay_averages = spark.sql(f"""SELECT Year, avg(({delay_type_col_name} / ArrDelay) * 100) 
                                                       FROM delay_flights 
-                                                      GROUP BY Year""").show(truncate=False)
+                                                      GROUP BY Year""")
 
                 # Write the results to the specified output URI
                 flight_delay_averages.write.option("header", "true").mode("overwrite").csv(
