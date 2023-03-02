@@ -43,7 +43,11 @@ def calculate_flight_delays(data_source, output_uri, delay_type_col_name='Carrie
                 flight_delay_averages.write.option("header", "true").mode("overwrite").csv(
                     "{}/{}/{}/{}".format(output_uri, 'iterations', delay_type_col_name, index + 1))
 
-
+"""
+This function can be called with the arguments such as following:
+--data_source s3://bdat-demo/input/DelayedFlights-updated.csv
+--output_uri s3://bdat-demo/output --delay_type_col_name CarrierDelay
+"""
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
