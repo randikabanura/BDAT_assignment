@@ -29,7 +29,6 @@ With spark installed python script can be run with following arguments:
 --iterations 1
 ```
 
-
 ## Author
 
 Name: [Banura Randika Perera](https://github.com/randikabanura) <br/>
