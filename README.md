@@ -29,6 +29,12 @@ With spark installed python script can be run with following arguments:
 --iterations 1
 ```
 
+## Comparison
+
+See the below table for details on time consumption with queries and iterations.
+
+![HiveQL vs Spark-SQL Performance Comparison Table]
+
 ## Presentation and Demo
 
 Can check out the presentation on Mapreduce vs Spark and how each task is executed with the following video.
