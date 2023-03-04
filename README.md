@@ -29,6 +29,12 @@ With spark installed python script can be run with following arguments:
 --iterations 1
 ```
 
+## Presentation and Demo
+
+Use can checkout the presentation on Mapreduce vs Spark and how each task is executed with the following video.
+
+[Watch the video](https://drive.google.com/file/d/10x7jTuetRrKrgC8gFRyjz__U_6FlX7qn/view?usp=share_link)
+
 ## Author
 
 Name: [Banura Randika Perera](https://github.com/randikabanura) <br/>
