@@ -33,7 +33,7 @@ With spark installed python script can be run with following arguments:
 
 See the below table for details on time consumption with queries and iterations.
 
-![HiveQL vs Spark-SQL Performance Comparison Table](UoM_MapReduce-vs-Spark/Comparison/HiveQL vs Spark-SQL Performance Comparison Table.png)
+<img alt="HiveQL vs Spark-SQL Performance Comparison Table" src="UoM_MapReduce-vs-Spark/Comparison/HiveQL vs Spark-SQL Performance Comparison Table.png"/>
 
 ## Presentation and Demo
 
