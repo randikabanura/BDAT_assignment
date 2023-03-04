@@ -31,7 +31,7 @@ def calculate_flight_delays(data_source, output_uri, delay_type_col_name='Carrie
                                                   GROUP BY Year""")
 
             # Write the results to the specified output URI
-            flight_delay_averages.write.option("header", "true").mode("overwrite").csv(
+            flight_delay_averages.repartition(1).write.option("header", "true").mode("overwrite").csv(
                 "{}/{}".format(output_uri, delay_type_col_name))
         else:
             for index in range(iterations):
@@ -40,13 +40,13 @@ def calculate_flight_delays(data_source, output_uri, delay_type_col_name='Carrie
                                                       GROUP BY Year""")
 
                 # Write the results to the specified output URI
-                flight_delay_averages.write.option("header", "true").mode("overwrite").csv(
+                flight_delay_averages.repartition(1).write.option("header", "true").mode("overwrite").csv(
                     "{}/{}/{}/{}".format(output_uri, 'iterations', delay_type_col_name, index + 1))
 
 """
 This function can be called with the arguments such as following:
---data_source s3://bdat-demo/input/DelayedFlights-updated.csv
---output_uri s3://bdat-demo/output --delay_type_col_name CarrierDelay
+--data_source s3://bdat-assignment/input/DelayedFlights-updated.csv
+--output_uri s3://bdat-assignment/output --delay_type_col_name CarrierDelay
 """
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
